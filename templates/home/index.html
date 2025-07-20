@@ -1,0 +1,143 @@
+{% extends 'home/base.html' %} 
+{% load static %}
+
+{% block title %} 
+    Canteen Automation System 
+{% endblock %} 
+
+{% block content %}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for i in items %}
+      {% if forloop.counter == 1 %}
+        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+      {% else %}
+        <li data-target="#myCarousel" data-slide-to="{{forloop.counter}}"></li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+
+  <div class="carousel-inner">
+    {% for item in items %}
+      {% if forloop.counter == 1 %}
+      <div class="item active" style="margin:4.5%  35%;" >
+          <img
+          src="/media/{{item.Image}}"
+          alt=""
+          width="755px"
+          style="border-radius: 25px"
+          />
+        <h2 style="text-align:center; padding-top: 2rem; color: black">{{item.title}}</h2>
+      </div>
+      {% else %}
+        <div class="item" style="margin:4.5%  35%;" >
+          <img
+          src="/media/{{item.Image}}"
+          alt=""
+          width="755px"
+          style="border-radius: 25px"
+          />
+        <h2 style="text-align:center; padding-top: 2rem; color: black">{{item.title}}</h2>
+      </div>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+
+    
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="menu ">
+  <div class="container ">
+    <div class="row">
+      <a href="{% url 'breakfast' %}">
+        <div class="col-sm-6 col-md-4">
+          <div
+            class="thumbnail"
+            style="text-align: center; border-radius: 20px 20px 20px 20px"
+          >
+            <img
+              class="item-image"
+              src="{% static '/images/SEPM 127.jpg' %}"
+              style="border-radius: 20px 20px 20px 20px"
+            />
+            <div class="caption">
+              <h4 class="item-title">Breakfast</h4>
+              <p class="item-price"></p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="{% url 'lunch' %}">
+        <div class="col-sm-6 col-md-4">
+          <div
+            class="thumbnail"
+            style="text-align: center; border-radius: 20px 20px 20px 20px"
+          >
+            <img
+              class="item-image"
+              src="{% static '/images/Thali.jpg' %}"
+              style="border-radius: 20px 20px 20px 20px"
+            />
+            <div class="caption">
+              <h4 class="item-title">Lunch</h4>
+              <p class="item-price"></p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="{% url 'dinner' %}">
+        <div class="col-sm-6 col-md-4">
+          <div
+            class="thumbnail"
+            style="text-align: center; border-radius: 20px 20px 20px 20px">
+            <img
+              class="item-image"
+              src="{% static '/images/SEPM 137.jpg' %}"
+              style="border-radius: 20px 20px 20px 20px"
+            />
+            <div class="caption">
+              <h4 class="item-title">Dinner</h4>
+              <p class="item-price"></p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+
+{% endblock %}

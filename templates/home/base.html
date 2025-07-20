@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static '/css/order.css' %}"
+      type="text/css"
+    />
+
+    <!--jQuery library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static '/js/cart.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock title %}</title>
+    {% block style %}{% endblock style %}
+  </head>
+
+  <body style="background-color: rgb(218, 207, 207)">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#abc"
+          ></button>
+          <a class="navbar-brand color-light" href="{% url 'home' %}">SFIT Canteen</a>
+        </div>
+        <div class="collapse navbar-collapse" id="abc">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/cart"
+                ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a
+              >
+            </li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'home' %}"> {{user.username}}</a></li>
+            <li>
+              <a href="{% url 'logout' %}"
+                ><span class="glyphicon glyphicon-log-out"></span> Logout</a
+              >
+              {% else %}
+            </li>
+
+            <li>
+              <a href="{% url 'login' %}"
+                ><span class="glyphicon glyphicon-log-out"></span> Login</a
+              >
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock content %}
+
+    <footer>
+      <div
+        class="container-fluid"
+        style="
+          background-color: white;
+          text-align: center;
+          padding-bottom: 5px;
+          padding-top: 7px;
+        "
+      >
+        <b>
+          <p style="color: black">
+            Copyright
+            <span
+              class="glyphicon glyphicon-copyright-mark"
+              style="color: black"
+              ><b>
+                SFIT Canteen All Rights Reserved | Contact Us: 8452817984
+              </b>
+            </span>
+          </p>
+        </b>
+      </div>
+    </footer>
+  </body>
+</html>

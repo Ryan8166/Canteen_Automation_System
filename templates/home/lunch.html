@@ -1,0 +1,85 @@
+{% extends 'home/base.html' %} {% load static %} {% block title %} Canteen -
+Lunch {% endblock %} {% block content %}
+<div class="container">
+  <div
+    class="jumbotron"
+    style="
+      margin-top: 9%;
+      text-align: center;
+      border-radius: 15px 15px 15px 15px;
+    "
+  >
+    <h1>Welcome to Canteen Automation System</h1>
+    <p>Every meal is a happy meal</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    {% for item in items %}
+    <div class="col-sm-6 col-md-3">
+      <div
+        class="thumbnail"
+        style="text-align: center; border-radius: 15px 15px 15px 15px"
+      >
+        <img
+          class="item-image"
+          src="/media/{{item.Image}}"
+          style="border-radius: 15px 15px 15px 15px"
+        />
+        <div class="caption">
+          <h4 class="item-title">{{item.title}}</h4>
+          <p class="item-price">Rs {{item.Price}}</p>
+          <div class="addToCartbutton">
+            <button
+              class="btn btn-primary btn-block"
+              style="position: relative; background-color: rgb(27, 15, 27)"
+            >
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container">
+        <div class="jumbotron"
+            style="background-image: url('{% static "/images/SEPM 123.jpg" %}'); text-align: center; border-radius: 15px 15px 15px 15px;">
+            <section class="container content-section">
+                <h2 style="text-align: center; margin-top: 10px;text-decoration: underline;" class="section-header">
+                    <strong>CART</strong>
+                </h2>
+                
+                <div class="cart-row">
+                    <span class="cart-item cart-header cart-column">ITEM</span>
+                    <span class="cart-price cart-header cart-column">PRICE</span>
+                    <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+                    
+                    
+                </div>
+                
+                
+                <form action="#" method="post">
+                    <div class="cartItems"></div>
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Total</strong>
+                        <span class="cart-total-price" id="TotalAmount" name="Total">Rs 0</span>
+                    </div>
+                    
+                    <!-- Confirm btn  -->
+                    <div class="purchaseBtn"><button type="submit" class="btn btn-primary btn-block" style="height: 50px;">CONFIRM
+                        ORDER</button></div>
+                        {% comment %} <input  type="hidden" class="hide"  name="totalAmount" id="total">
+                        <input  type="hidden" class="hide"  name="order" id="order0"> {% endcomment %}
+                    </form>
+                
+
+            </section>
+
+        </div>
+    </div>
+{% endblock %}
